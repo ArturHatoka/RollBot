@@ -16,11 +16,11 @@ def run():
     test = 0
 
     while True:
-        while test < 5:
+        while test < 10:
             flip = pyautogui.locateCenterOnScreen('./coin_flip/start.png', confidence=0.9)
             if bool(flip):
                 pyautogui.moveTo(flip[0], flip[1] + 65)
-                test = 5
+                test = 10
             else:
                 
                 time.sleep(2)
@@ -29,11 +29,11 @@ def run():
         click()
         time.sleep(3)
 
-        while test < 5:
+        while test < 10:
             start = pyautogui.locateCenterOnScreen('./images/start.png', confidence=0.6)
             if bool(start):
                 pyautogui.moveTo(start)
-                test = 5
+                test = 10
             else:
                 time.sleep(2)
                 test += 1
@@ -77,7 +77,7 @@ def run():
                     pyautogui.moveTo(choise)
                     click()
                     test = 5
-                    time.sleep(900)
+                    time.sleep(60)
                 else:
                     time.sleep(1)
                     test += 1

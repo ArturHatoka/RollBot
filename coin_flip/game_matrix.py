@@ -8,7 +8,8 @@ pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesse
 
 matrixs = [
     {'name': '3x4', 'path': './coin_flip/matrix/matrix_3x4.png'},
-    {'name': '4x4', 'path': './coin_flip/matrix/matrix_4x4.png'}
+    {'name': '4x4', 'path': './coin_flip/matrix/matrix_4x4.png'},
+    {'name': '5x4', 'path': './coin_flip/matrix/matrix_5x4.png'},
 ]
 
 
@@ -50,6 +51,11 @@ def get_matr_size(matr):
             'width': 637,
             'height': 657
         }
+    elif matr == '5x4':
+        return {
+            'width': 814,
+            'height': 657
+        }
 
 
 def get_block_size(matr, matr_size):
@@ -61,6 +67,11 @@ def get_block_size(matr, matr_size):
     elif matr == '4x4':
         return {
             'width': matr_size['width'] / 4,
+            'height': matr_size['height'] / 4
+        }
+    elif matr == '5x4':
+        return {
+            'width': matr_size['width'] / 5,
             'height': matr_size['height'] / 4
         }
 
@@ -88,7 +99,15 @@ def get_block_matrix(matrix, matrix_center, block_size):
         start_col = 4
         start_block = [
             matrix_center[0] - (block_size['width'] * 2 + block_size['width'] / 2),
-            matrix_center[1] - block_size['height'] / 2
+            matrix_center[1] - (block_size['height'] + block_size['height'] / 2)
+        ]
+    elif matrix == '5x4':
+        row = 4
+        col = 5
+        start_col = 5
+        start_block = [
+            matrix_center[0] - (block_size['width'] * 2 + block_size['width']),
+            matrix_center[1] - (block_size['height'] + block_size['height'] / 2)
         ]
     # time.sleep(0.6)
     # pyautogui.moveTo(start_block)
